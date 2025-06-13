@@ -1,0 +1,224 @@
+1.1 Chapter Practice and Quiz
+Scroll to begin 
+
+1.1.1 Introduction - IPv4/IPv6 Addressing and Routing Review
+This chapter covers the following content:
+
+IPv4 Addressing: This section provides a review of IPv4 addressing and covers issues you might face and how to troubleshoot them.
+DHCP for IPv4: This section reviews DHCP for IPv4 operations, explores potential DHCP issues, and examines the output of various DHCP show commands.
+IPv6 Addressing: This section provides a brief review of IPv6 addressing.
+IPv6 SLAAC, Stateful DHCPv6, and Stateless DHCPv6: This section explores how clients obtain IPv6 addressing information using SLACC, stateful DHCPv6, and stateless DHCPv6.
+Packet-Forwarding Process: This section discusses the packet-forwarding process and the commands to verify the entries in the data structures that are used for this process. It also provides you with a collection of Cisco IOS Software commands that could prove useful when troubleshooting related issues.
+Routing Information Sources: This section explains which sources of routing information are the most believable and how the routing table interacts with various data structures to populate itself with the best information.
+Static Routes: This section reviews how to configure and verify IPv4 and IPv6 static routes.
+Trouble Tickets: This section provides a number of trouble tickets that demonstrate how a structured troubleshooting process is used to solve a reported problem.
+1.1.2 Lab - Troubleshooting IPv4 and IPv6 Routing Issue
+In this lab, you will troubleshoot network issues related to IPv4 and IPv6 Addressing.
+
+
+description
+Troubleshoot IPv4 and IPv6 Addressing Issues
+1.1.3 Lab - Troubleshoot Static Routing
+In this lab, you will troubleshoot network issues related to IPv4 and IPv6 static routing.
+
+
+description
+Troubleshoot Static Routing
+Question 1
+What do devices on the same IPv4 subnet have in common?
+
+
+radio_button_unchecked
+They all use the same default gateway.
+
+radio_button_unchecked
+They all have a subnet mask of /8, /16, or /24.
+
+radio_button_unchecked
+They all have the same last octet in their IPv4 addresses.
+
+radio_button_unchecked
+They all have the same number in the first three octets of their IPv4 address.
+Question 2
+The graphic shows a network with devices connected as follows:  
+Router R1, interface G0/1 is connected to router R2, interface G0/1. G0/1 on R1 has IP address 10.0.01/30 and G0/1 on R2 has IP address 10.0.0.2/30. The DHCPv4 server is connected to R2 on interface G0/0. R2 interface G0/0 has IP address 10.2.0.254/16 and the DHCPv4 server has IPv4 address 10.2.0.250. The new subnet is connected to router R1 on interface G0/0, which has IP address 10.1.0.254/16.
+Refer to the exhibit. A network administrator has added a new subnet to the network and needs hosts on that subnet to receive IPv4 addresses from the DHCPv4 server.
+What two commands will allow hosts on the new subnet to receive addresses from the DHCP4 server? (Choose two.)
+
+
+check_box_outline_blank
+R1(config)# interface G0/0
+
+check_box_outline_blank
+R1(config-if)# ip helper-address 10.2.0.250
+
+check_box_outline_blank
+R2(config)# interface G0/0
+
+check_box_outline_blank
+R2(config-if)# ip helper-address 10.2.0.250
+
+check_box_outline_blank
+R1(config-if)# ip helper-address 10.1.0.254
+
+check_box_outline_blank
+R1(config)# interface G0/1
+Question 3
+The exhibit shows the following commands configured on router R1:<br>R1(config)# interface fastethernet 0/0<br>R1(config-if)# ipv6 address 2000:db8:c18:1::/64 eui-64<br>R1(config-if)# no shutdown<br>R1(config-if)# exit
+Refer to the exhibit. How will R1 generate the interface ID portion of the IPv6 address on interface FastEthernet 0/0?
+
+
+radio_button_unchecked
+By using stateful DHCP
+
+radio_button_unchecked
+By using a manually set value of 64
+
+radio_button_unchecked
+By using a randomly generated 64-bit number
+
+radio_button_unchecked
+By using the interface MAC address with a 16-bit filler
+Question 4
+What is the function of ARP?
+
+
+radio_button_unchecked
+Resolves domain names to IP addresses
+
+radio_button_unchecked
+Provides automatic IP address assignments to hosts
+
+radio_button_unchecked
+Sends error and operational information messages to hosts
+
+radio_button_unchecked
+Maps IPv4 addresses to MAC addresses
+Question 5
+The exhibit shows two PCs called PC A and PC B, two routes called R1 and R2, and two switches. PC A has the address 172.16.1.1/24 and is connected to a switch and into an interface on R1 that has the IP address 172.16.1.254. PC B has the address 172.16.2.1/24 and is connected to a switch that is connected to another interface on R1 with the IP address 172.16.2.254. The serial interface on R1 has the address 172.16.3.1 and is connected to the serial interface on R2 that has the address 172.16.3.2/24. R2 is connected to the internet cloud.
+Which command will create a static route on R2 in order to reach PC B?
+
+
+radio_button_unchecked
+R2(config)# ip route 172.16.2.1 255.255.255.0 172.16.3.1
+
+radio_button_unchecked
+R2(config)# ip route 172.16.2.0 255.255.255.0 172.16.2.254
+
+radio_button_unchecked
+R2(config)# ip route 172.16.2.0 255.255.255.0 172.16.3.1
+
+radio_button_unchecked
+R2(config)# ip route 172.16.3.0 255.255.255.0 172.16.2.254
+Question 6
+Which statement describes one purpose of the subnet mask setting for a host?
+
+
+radio_button_unchecked
+It is used to describe the type of the subnet.
+
+radio_button_unchecked
+It is used to identify the default gateway.
+
+radio_button_unchecked
+It is used to determine to which network the host is connected.
+
+radio_button_unchecked
+It is used to determine the maximum number of bits within one packet that can be placed on a particular network.
+Question 7
+The exhibit shows a small network. Host A connects to switch ASw1. ASw1 connects to router RTA on the RTA Fa0/0 interface.  The RTA Fa0/0 interface has the IP address 10.1.1.1/24. A DHCP server with IP address 10.1.2.10/24 connects to switch ASw2. ASw2 connects to router RTA via the RTA Fa0/1 interface, which has the IP address 10.1.2.1/24.<br>
+Refer to the exhibit. Host A is unable to obtain an IP address from the DHCP server. Which procedure would solve this problem?
+
+
+radio_button_unchecked
+Configure interface Fa0/0 of router RTA with the ip helper-address 10.1.2.1 command.
+
+radio_button_unchecked
+Configure interface Fa0/0 of router RTA with the ip helper-address 10.1.2.10 command.
+
+radio_button_unchecked
+Configure interface Fa0/1 of router RTA with the ip helper-address 10.1.2.10 command.
+
+radio_button_unchecked
+Configure interface Fa0/0 of router RTA with the ip forward-protocol 67 command.
+Question 8
+What two methods can be used to generate an interface ID by an IPv6 host that is using SLAAC? (Choose two.)
+
+
+check_box_outline_blank
+EUI-64
+
+check_box_outline_blank
+Random generation
+
+check_box_outline_blank
+Stateful DHCPv6
+
+check_box_outline_blank
+DAD
+
+check_box_outline_blank
+ARP
+Question 9
+Which routing protocol uses an administrative distance of 110?
+
+
+radio_button_unchecked
+RIP
+
+radio_button_unchecked
+OSPF
+
+radio_button_unchecked
+EIGRP
+
+radio_button_unchecked
+BGP
+Question 10
+Which type of packet is sent by a DHCP server after receiving a DHCP Discover message?
+
+
+radio_button_unchecked
+DHCP ACK
+
+radio_button_unchecked
+DHCP Discover
+
+radio_button_unchecked
+DHCP Offer
+
+radio_button_unchecked
+DHCP Request
+Question 11
+What are the two main components of Cisco Express Forwarding (CEF)? (Choose two.)
+
+
+check_box_outline_blank
+Adjacency tables
+
+check_box_outline_blank
+MAC-address tables
+
+check_box_outline_blank
+Routing tables
+
+check_box_outline_blank
+ARP tables
+
+check_box_outline_blank
+Forwarding information base (FIB)
+Question 12
+Which destination IP address is used when an IPv6 host sends a DHCPv6 SOLICIT message to locate a DHCPv6 server?
+
+
+radio_button_unchecked
+FF02::1:2
+
+radio_button_unchecked
+FF02::1
+
+radio_button_unchecked
+FE80::1
+
+radio_button_unchecked
+FF02::2
